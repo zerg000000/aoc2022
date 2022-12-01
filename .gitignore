@@ -1,0 +1,6 @@
+.calva/
+.clj-kondo/
+.lsp/
+.portal/
+
+resources/day*.txt
