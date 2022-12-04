@@ -1,15 +1,21 @@
 (ns aoc2022.day3
-  (:require [clojure.java.io :as io]
-            [clojure.set :as set]
-            [clojure.string :as string]))
+  (:require
+    [clojure.java.io :as io]
+    [clojure.set :as set]
+    [clojure.string :as string]))
 
-(defn read-lines [f]
+
+(defn read-lines
+  [f]
   (-> (io/file f)
       (io/reader)
       (line-seq)))
 
-(defn item-type [[f s]]
+
+(defn item-type
+  [[f s]]
   (first (set/intersection (set f) (set s))))
+
 
 (defn type->priority
   [t]
@@ -18,12 +24,14 @@
       (+ (- c (int \a)) 1)
       (+ (- c (int \A)) 1 26))))
 
+
 (defn ->compartments
   [rucksack]
   (let [chars (seq rucksack)
         len (count chars)
         result (partition (/ len 2) chars)]
     result))
+
 
 (comment
   (- (int \p) (int \a))
@@ -33,6 +41,7 @@
   (type->priority \L)
   (type->priority \P)
   (type->priority \v))
+
 
 ;; part 1
 
@@ -44,8 +53,10 @@
        (map type->priority)
        (reduce +)))
 
+
 (comment
   (sum-of-priority "resources/day3.txt"))
+
 
 ;; part 2
 
@@ -59,6 +70,7 @@
        (map first)
        (map type->priority)
        (reduce +)))
+
 
 (comment
   (sum-of-group-priority "resources/day3.txt"))
