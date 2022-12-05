@@ -60,7 +60,7 @@
 
 (defn run-all
   [f mover-fn]
-  (let [[stacks-lines _ ops-lines] (read-lines)
+  (let [[stacks-lines _ ops-lines] (read-lines f)
         stacks (read-stacks stacks-lines)
         ops (map parse-op ops-lines)]
     (reduce
@@ -90,7 +90,7 @@
 
 (defn part-1
   []
-  (->> (run-all nil interpet)
+  (->> (run-all "resources/day5.txt" interpet)
        (map peek)
        (apply str)))
 
@@ -112,7 +112,7 @@
 
 (defn part-2
   []
-  (->> (run-all nil interpet-cratemover-9001)
+  (->> (run-all "resources/day5.txt" interpet-cratemover-9001)
        (map peek)
        (apply str)))
 
